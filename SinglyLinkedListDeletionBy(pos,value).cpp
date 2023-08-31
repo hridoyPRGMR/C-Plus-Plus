@@ -106,6 +106,20 @@ void deleteN(Node* &head,int val){
     deleteN(head->next,val);
 }
 
+void deleteAll(Node* &head){
+
+    Node *curr=head;
+    Node *forward=nullptr;
+
+    while(curr!=nullptr){
+        forward=curr->next;
+        free(curr);
+        curr=forward;
+    }
+    head=nullptr;
+
+}
+
 int main(){
 
     Node* node=nullptr;
@@ -127,7 +141,9 @@ int main(){
     deleteN(node,99);
 
     print(node);
+    
+    deleteAll(node);
+
 
 return 0;
 }
-
